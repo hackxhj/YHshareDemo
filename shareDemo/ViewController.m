@@ -159,8 +159,7 @@
 - (IBAction)show:(id)sender {
     
     YHshareView *showView=[YHshareView new];
-    
-   // [showView showShareView:self.view];
+    [showView showShareView:self.view title:@"标题" description:@"描述文件"imgurl:@"http://www.baidu.com/1.png" musicUrl:@"http://www.baidu.com/1.mp3" mainUrl:@"http://www.baidu.com/"];
 }
 
 

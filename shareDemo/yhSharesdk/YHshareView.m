@@ -217,7 +217,7 @@
     self.musicurl=musicurl;
     self.mainurl=mainurl;
     
-     [view addSubview:self];
+    [view addSubview:self];
     
     
 }
