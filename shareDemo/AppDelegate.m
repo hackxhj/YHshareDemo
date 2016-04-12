@@ -10,9 +10,10 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WXApiManager.h"
-
+#import "WeiboSDK.h"
 #import "YHShareMusic.h"
-
+#define kAppKey         @"2045436852"
+#define kRedirectURI    @"http://www.sina.com"
 @interface AppDelegate ()
 
 @end
@@ -29,10 +30,12 @@
 //    
 //    //向微信注册
 //    [WXApi registerApp:@"wxd930ea5d5a258f4f"];
-    
+    [WeiboSDK enableDebugMode:YES];
+
     [YHShareMusic regQQAuth:@"222222"];
     [YHShareMusic regWeChatAuth:@"wxd930ea5d5a258f4f"];
- 
+    [WeiboSDK registerApp:kAppKey];
+
     return YES;
 }
 

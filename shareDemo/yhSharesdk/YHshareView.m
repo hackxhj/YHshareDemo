@@ -146,34 +146,48 @@
     PlatItemView *show4=[[PlatItemView alloc]initWithIconText:[UIImage imageNamed:@"sns_icon_23"] :@"微信朋友圈"];
     show4.tag=1004;
     show4.delegate=self;
+    
+    
+    PlatItemView *show5=[[PlatItemView alloc]initWithIconText:[UIImage imageNamed:@"sns_icon_1"] :@"新浪微博" ];
+    show5.tag=1005;
+    show5.delegate=self;
+
     [self.mainShowView addSubview:show1];
     [self.mainShowView addSubview:show2];
     [self.mainShowView addSubview:show3];
     [self.mainShowView addSubview:show4];
+    [self.mainShowView addSubview:show5];
     
   //  int padding=10;
     int padding=(kScreenWidth-(4*60))/5;
     [show1 mas_makeConstraints:^(MASConstraintMaker *make) {
          make.size.mas_equalTo(CGSizeMake(60, 80));
-         make.centerY.equalTo(self.mainShowView);
+         make.top.mas_equalTo(padding);
          make.left.equalTo(self.mainShowView).offset(padding);
     }];
     [show2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(show1);
-        make.centerY.equalTo(self.mainShowView);
+        make.top.mas_equalTo(padding);
         make.left.equalTo(show1.mas_right).offset(padding);
     }];
     
     [show3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(show1);
-        make.centerY.equalTo(self.mainShowView);
+        make.top.mas_equalTo(padding);
         make.left.equalTo(show2.mas_right).offset(padding);
     }];
     
     [show4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(show1);
-        make.centerY.equalTo(self.mainShowView);
+        make.top.mas_equalTo(padding);
         make.left.equalTo(show3.mas_right).offset(padding);
+    }];
+    [show5 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(show1);
+        
+        make.left.equalTo(self.mainShowView).offset(padding);
+        make.top.equalTo(show1.mas_bottom).offset(padding);
+        
     }];
     
     
@@ -189,7 +203,7 @@
       }];
     [self.mainShowView mas_makeConstraints:^(MASConstraintMaker *make) {
          make.width.equalTo(self);
-         make.height.equalTo(self).multipliedBy(0.2);
+         make.height.equalTo(self).multipliedBy(0.36);
          make.bottom.equalTo(self);
         make.left.equalTo(self);
         
@@ -236,8 +250,12 @@
     {
         [YHShareMusic shareMusic:0 platform:1 title:self.title description:self.descr imgurl:self.img musicUrl:self.musicurl mainUrl:self.mainurl];
         
-    }else{
+    }else if(tag==1004){
         [YHShareMusic shareMusic:1 platform:1 title:self.title description:self.descr imgurl:self.img musicUrl:self.musicurl mainUrl:self.mainurl];
+        
+    }else if(tag==1005)
+    {
+        [YHShareMusic shareMusic:0 platform:2 title:self.title description:self.descr imgurl:self.img musicUrl:self.musicurl mainUrl:self.mainurl];
         
     }
     [self dissView];
